@@ -1,35 +1,29 @@
+import React from 'react'
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import puppyList from './data.js'
+// import Puppy from './main.jsx'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function ShowPuppies () {
+  const [showPuppyList, setShowPuppyList] = useState(false)
+  console.log('imported puppy array: ', puppyList)
 
+  const togglePuppyList = () => {
+    setShowPuppyList(!showPuppyList)
+  }
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className='ShowPuppies'>
+      <h1>View best doggo names in town!</h1>
+      <p><em>In no particular order.</em></p>
+      <button onClick={togglePuppyList}>{showPuppyList ? 'Hide Puppy List' : 'Show Puppy List'}
+      </button>
+      {showPuppyList && (
+        <ul>
+          {puppyList.map((puppy) => (
+            <li key={puppy.id}>{puppy.name}</li>
+          ))}
+        </ul>
+      )
+      }
+    </div>
   )
 }
-
-export default App
