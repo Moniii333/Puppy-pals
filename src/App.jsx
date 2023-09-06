@@ -5,7 +5,7 @@ import puppyList from './data.js'
 
 export default function ShowPuppies () {
   const [showPuppyList, setShowPuppyList] = useState(false)
-  console.log('imported puppy array: ', puppyList)
+  // console.log('imported puppy array: ', puppyList)
 
   const togglePuppyList = () => {
     setShowPuppyList(!showPuppyList)
